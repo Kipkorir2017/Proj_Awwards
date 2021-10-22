@@ -1,6 +1,22 @@
 {%extends 'base.html'%}
 {% block content %}
 {{block.super}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            font-family: 'Lora', serif;
+
+        }
+        .introduction{
+            padding-bottom: 28%;
+        }
+    </style>
+</head>
+<body>
+    
+
 <div id="homepage">
     <div id="overlay" class="row">
 
@@ -10,12 +26,11 @@
             <p id="about" class="text-center" style="font-size:20px;font-weight:bold;">Projects</p>
         </div>
 
-
-
+    
         <div class="footer">
             <footer class="page-footer">
                 <div style=" font-size:12pt;">
-                    <div class="footer-copyright py-3" style="padding-left: 42%;">&#169;Copyright 2021: Benjamin
+                    <div class="footer-copyright py-3" style="padding-left: 42%;background-color:#050530;padding:20px;text-align:center;color:wheat">&#169;Copyright 2021: Benjamin
                         Kipkorir
                     </div>
                 </div>
@@ -25,3 +40,6 @@
 </div>
 
 {%endblock%}
+
+</body>
+</html>

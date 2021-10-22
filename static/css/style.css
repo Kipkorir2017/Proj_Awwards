@@ -1,27 +1,15 @@
 
 *{
     font-family: 'Lora', serif;
-    
 }
 #homepage{
     width: 100%; 
     overflow: hidden;
     padding-top: 3%;
 }
-.container{
-    justify-content:space-around;
-}
 
 
-
-
-
-
-
-
-
-
-.footer {
+footer {
     background-color: #080818;
     box-sizing: border-box;
     color: wheat;
