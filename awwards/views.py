@@ -1,8 +1,9 @@
 from django.http.response import HttpResponseRedirect
 from awwards.forms import ProjectForm, RatingsForm, SignUpForm, UpdateProfileForm, UpdateUserForm
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from awwards.models import Profile, Project, Rates
 from django.urls import reverse
+from django.contrib.auth.models import User
 # Create your views here.
 
 def display_index(request):
@@ -72,3 +73,29 @@ def search(request):
     else:
         message = "You haven't searched for anything,try again"
     return render(request, 'search.html', {'message': message})
+
+def post_project(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            post_project = form.save(commit=False)
+            post_project.user = current_user
+            post_project.save()
+            return redirect('index')
+    else:
+        form = ProjectForm()
+    return render(request, 'projects.html', {"form": form})
+
+
+def update_profile(request, id):
+    obj = get_object_or_404(Profile, user_id=id)
+    obj2 = get_object_or_404(User, id=id)
+    form = UpdateProfileForm(request.POST or None, request.FILES, instance=obj)
+    form2 = UpdateUserForm(request.POST or None, instance=obj2)
+    if form.is_valid() and form2.is_valid():
+        form.save()
+        form2.save()
+        return HttpResponseRedirect("/profile")
+
+    return render(request, "registration/update_profile.html", {"form": form, "form2": form2})

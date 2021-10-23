@@ -8,6 +8,8 @@ urlpatterns = [
     url('profile/',views.profile, name='profile'),
     url('search/', views.search, name='search'),
     url('project_info/(?P<id>\d+)', views.view_project, name='viewproject'),
+    url('upload/',views.post_project,name='post_proj'),
+    url('update/<id>', views.update_profile, name='update_profile'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

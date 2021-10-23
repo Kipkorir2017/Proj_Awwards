@@ -37,7 +37,7 @@
       <!-- Adding a search form  -->
       <div class="col-sm-4 col-md-4 navbar-right">
 
-        <form class="navbar-form" role="search" action="">
+        <form class="navbar-form" role="search" action="{% url 'search' %}">
 
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search project" name="category">
@@ -48,6 +48,7 @@
 
         </form>
       </div>
+      <li><a href="/admin"><i class="fa fa-user"></i><span>Admin</span></a></li>
   
   </div>
 </nav>
