@@ -15,19 +15,19 @@ def display_index(request):
     return render(request,'index.html',{"profiles":profiles,"projects":projects})
 
 
-
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     projects = Project.objects.filter(user=current_user.id).all
     return render(request, 'registration/profile.html', {"projects": projects})
 
-
+@login_required(login_url='/accounts/login/')
 def project(request, id):
     project = Project.objects.get(id=id)
     reviews = Rates.objects.all()
     return render(request, 'viewproject.html', {"project": project, "reviews": reviews})
 
-
+@login_required(login_url='/accounts/login/')
 def view_project(request, id):
     project = Project.objects.get(id=id)
     rate = Rates.objects.filter(user=request.user, project=project).first()
@@ -66,7 +66,7 @@ def view_project(request, id):
     }
     return render(request, 'viewproject.html', params)
 
-
+@login_required(login_url='/accounts/login/')
 def search(request):
     if 'project' in request.GET and request.GET['project']:
         project = request.GET.get("project")
@@ -77,6 +77,7 @@ def search(request):
         message = "You haven't searched for anything,try again"
     return render(request, 'search.html', {'message': message})
 
+@login_required(login_url='/accounts/login/')
 def post_project(request):
     current_user = request.user
     if request.method == 'POST':
@@ -90,7 +91,7 @@ def post_project(request):
         form = ProjectForm()
     return render(request, 'projects.html', {"form": form})
 
-
+@login_required(login_url='/accounts/login/')
 def update_profile(request, id):
     obj = get_object_or_404(Profile, user_id=id)
     obj2 = get_object_or_404(User, id=id)
@@ -102,3 +103,22 @@ def update_profile(request, id):
         return HttpResponseRedirect("/profile")
 
     return render(request, "registration/update_profile.html", {"form": form, "form2": form2})
+
+
+def signup(request):
+    print('here')
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db() 
+            user.profile.birth_date = form.cleaned_data.get('full_name')
+            user.save()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+
+            login(request, user)
+            return redirect('login')
+    else:
+        form = SignUpForm()
+    return render(request, 'registration/registration_form.html', {'form': form})
