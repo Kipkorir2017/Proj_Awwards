@@ -12,7 +12,7 @@
             overflow: hidden;
         }
         .introduction{
-            padding-bottom: 28%;
+            padding-bottom: 15%;
         }
     </style>
 </head>
@@ -25,18 +25,19 @@
         <div class="introduction">
             <h1 class="text-center">Welcome To Projects-Awwards</h1>
             <hr>
+            
+            <a href="{% url 'post_proj' %}"> <input type="button" class="btn btn-primary text-center " value="Post Project" style="margin-left: 46.5%;margin-right: 40%;"></a>
             <p id="about" class="text-center" style="font-size:20px;font-weight:bold;">Projects</p>
-            <a href="{% url 'post_proj' %}"> <input type="button" class="btn btn-success text-center " value="Post Project"></a>
-
+            <hr>
         </div>
     </div>
 </div>
 </div>
-<div class="container">
 
-<h1 class='text-center' style="font-style: italic;">Projects</h1>
+
+
 <div class="container" style="margin-bottom: 10%;">
-    <hr />
+   
     {% for project in projects%}
     <div class="col-lg-4">
         <div
