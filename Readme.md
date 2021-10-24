@@ -22,8 +22,8 @@ A project Awwards Django application that allows users to post their projects  w
 -User is able to search for different projects
 
 # API Endpoints
-* <a href="">Profiles Endpoints</a>
-* <a href="">Projects Endpoints</a>
+* <a href="http://127.0.0.1:8000/api/v1/profile'">Profiles Endpoints</a>
+* <a href="http://127.0.0.1:8000/api/v1/projects'">Projects Endpoints</a>
 
 # Prerequisites
 The following are required to start working on this project: 
