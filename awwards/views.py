@@ -10,9 +10,9 @@ from django.contrib.auth.forms import AuthenticationForm
 # Create your views here.
 
 def display_index(request):
-    profiles=Profile.objects.all()
+    profile=Profile.objects.all()
     projects=Project.objects.all()
-    return render(request,'index.html',{"profiles":profiles,"projects":projects})
+    return render(request,'index.html',{"profiles":profile,"projects":projects})
 
 
 @login_required(login_url='/accounts/login/')
@@ -51,7 +51,7 @@ def view_project(request, id):
             review.usability = usability
             review.content = content
             review.average = (
-                review.design + review.usability + review.content)/3
+            review.design + review.usability + review.content)/3
             review.save()
             return HttpResponseRedirect(reverse('viewProject', args=(project.id,)))
     else:
@@ -93,7 +93,7 @@ def post_project(request):
 
 @login_required(login_url='/accounts/login/')
 def update_profile(request, id):
-    obj = get_object_or_404(Profile, user_id=id)
+    obj = get_object_or_404(Profile, id)
     obj2 = get_object_or_404(User, id=id)
     form = UpdateProfileForm(request.POST or None, request.FILES, instance=obj)
     form2 = UpdateUserForm(request.POST or None, instance=obj2)

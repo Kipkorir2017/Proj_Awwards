@@ -64,8 +64,7 @@ class Rates(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     project = models.ForeignKey(Project, null=True, on_delete=models.CASCADE)
     design = models.IntegerField(choices=RATE_CHOICES, default=0, blank=False)
-    usability = models.IntegerField(
-    choices=RATE_CHOICES, default=0, blank=False)
+    usability = models.IntegerField(choices=RATE_CHOICES, default=0, blank=False)
     content = models.IntegerField(choices=RATE_CHOICES, default=0, blank=False)
     average = models.DecimalField(default=1, blank=False, decimal_places=2, max_digits=40)
     date = models.DateTimeField(auto_now_add=True)

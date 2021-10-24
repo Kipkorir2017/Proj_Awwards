@@ -19,9 +19,9 @@ from django.conf.urls import url,include
 from django.contrib.auth import views 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url('admin/', admin.site.urls),
     url('',include('awwards.urls')),
-    path(r'accounts/', include('registration.backends.simple.urls')),
-    # path(r'logout/', views.LogoutView.as_view(), {"next_page": 'accounts/signup'}), 
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    # path(r'logout/', views.LogoutView.as_view(),{"next_page": 'accounts/signup'}), 
     url(r'logout/', views.logout_then_login),
 ]

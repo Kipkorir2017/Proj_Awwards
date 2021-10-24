@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {%block content%}
 <style>
-    
+    * {
+        font-family: 'Lora', serif;
+    }
+
     .view-profile {
         padding-left: 25%;
     }
-    .profile{
+
+    .profile {
         width: 130px;
         height: 130px;
         overflow: hidden;
@@ -49,19 +53,21 @@
 <div class="container">
     <div class="col-md-4">
         <div class="profile" class="rounded-circle">
-            <img src="{{user.profile.profile_pic.url }}" class="avatar" alt="Avatar"
+            <img src="{{user.profiles.profile_url.url }}" class="avatar" alt="Avatar"
                 onerror="this.src='https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png'"
-                style="color:white"> </div>
+                style="color:white">
+        </div>
     </div>
     <div class="col-md-8 ">
         <div class="view-profile ">
             <div class="media-body ">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3><span style="padding-right: 3%;">{{user.username}} </span><a
-                                href="{% url 'update_profile' user.id %}" target="_blank"><button
-                                    class="btn btn-warning btn-">Edit Profile</button></a>
+
+                        <h3><span style="padding-right: 3%;">{{user.username}} </span><a href="" target="_blank"><button
+                                    class="btn btn-success btn-">Edit Profile</button></a>
                         </h3>
+
                     </div>
                 </div>
                 <div class="row" style="margin-top:2%">
@@ -96,7 +102,7 @@
         <div
             style="background-color: rgb(250, 246, 246);box-sizing: border-box; margin-top:5%;box-shadow: 0vh 0vh 1vh gainsboro;">
             <div class="fadeoverlay">
-                <a href="{% url 'viewProject' id=project.id %}">
+                <a href="{% url 'viewproject' id=project.id %}">
                     <img src="{{project.image.url}}" class="img-responsive" alt="{{image.name}}"
                         style="width:100%;width:100%">
                     <div class="overlay">

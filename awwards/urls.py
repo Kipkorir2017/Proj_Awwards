@@ -2,6 +2,7 @@ from django.conf.urls import url
 from .import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path
 
 urlpatterns = [
     url(r'^$',views.display_index,name="index"),
@@ -9,7 +10,7 @@ urlpatterns = [
     url('search/', views.search, name='search'),
     url('project_info/(?P<id>\d+)', views.view_project, name='viewproject'),
     url('upload/',views.post_project,name='post_proj'),
-    url('update/<id>', views.update_profile, name='update_profile'),
+    url('update/',views.update_profile, name='update_prof'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
