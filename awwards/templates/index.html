@@ -3,88 +3,89 @@
 {{block.super}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
-        *{
+        * {
             font-family: 'Lora', serif;
         }
-        html{
-            overflow: hidden;
-        }
-        .introduction{
-            padding-bottom: 15%;
+        .html{
+            overflow:hidden;
         }
     </style>
 </head>
+
 <body>
-    
-
-<div id="homepage">
-    <div id="overlay" class="row">
-
-        <div class="introduction">
-            <h1 class="text-center">Welcome To Projects-Awwards</h1>
-            <hr>
-            
-            <a href="{% url 'post_proj' %}"> <input type="button" class="btn btn-primary text-center " value="Post Project" style="margin-left: 46.5%;margin-right: 40%;"></a>
-            <p id="about" class="text-center" style="font-size:20px;font-weight:bold;">Projects</p>
-            <hr>
-        </div>
-    </div>
-</div>
-</div>
 
 
+    <div id="homepage">
+        <div id="overlay" class="row">
 
-<div class="container" style="margin-bottom: 10%;">
-   
-    {% for project in projects%}
-    <div class="col-lg-4">
-        <div
-            style="background-color: rgb(250, 246, 246);box-sizing: border-box; margin-top:5%;box-shadow: 0vh 0vh 1vh gainsboro;">
-            <div class="fadeoverlay">
-                <a href="{% url 'viewproject' id=project.id %}">
-                    <img src="{{project.image.url}}" class="img-responsive" alt="{{image.name}}"
-                        style="width:100%;width:100%">
-                    <div class="overlay">
-                    </div>
-                </a>
+            <div class="introduction">
+                <h1 class="text-center">Welcome To Projects-Awwards</h1>
+                <hr>
+
+                <a href="{% url 'post_proj' %}"> <input type="button" class="btn btn-primary text-center "
+                        value="Post Project" style="margin-left: 46.5%;margin-right: 40%;"></a>
+                <p id="about" class="text-center" style="font-size:20px;font-weight:bold;">Projects</p>
+                <hr>
             </div>
-            <div class="row" style="padding-top: 5%">
-                <div class="col-md-12">
-                    <p><a href="{{project.url}}" class="text-right" style="text-decoration: none;">
-                            {{project.title}} <img
-                                src="https://img.icons8.com/color/48/000000/circled-up-right--v1.png"
-                                style="width:15px;height:auto" />
-                        </a></p>
+        </div>
+
+
+
+
+    <div class="container" style="margin-bottom: 10%;">
+
+        {% for project in projects%}
+        <div class="col-lg-4">
+            <div
+                style="background-color: #fafaf6;box-sizing: border-box; margin-top:5%;box-shadow: 0vh 0vh 1vh gainsboro;">
+                <div class="fadeoverlay">
+                    <a href="{% url 'viewproject' id=project.id %}">
+                        <img src="{{project.image.url}}" class="img-responsive" alt="{{image.name}}"
+                            style="width:100%;width:100%">
+                        <div class="overlay">
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div class="row" style="padding-bottom: 5% ;font-size:10pt; color: palevioletred;">
-                <div class="col-md-6" style="padding-bottom: 5%"> By: {{project.user.username}}</div>
-                <div class="col-md-6">{{project.date|date:"M d, Y" }} </div>
-            </div>
-        </div>
-    </div>
-    {%endfor%}
-</div>
-</div>
-    
-        <div class="footer">
-            <footer class="page-footer">
-                <div style=" font-size:12pt;">
-                    <div class="footer-copyright py-3" style="padding-left: 42%;background-color:#050530;padding:20px;text-align:center;color:wheat">&#169;Copyright 2021: Benjamin
-                        Kipkorir
+                <div class="row" style="padding-top: 5%">
+                    <div class="col-md-12">
+                        <p><a href="{{project.url}}" class="text-right" style="text-decoration: none;">
+                                {{project.title}} <img
+                                    src="https://img.icons8.com/color/48/000000/circled-up-right--v1.png"
+                                    style="width:15px;height:auto" />
+                            </a></p>
                     </div>
                 </div>
-            </footer>
+                <div class="row" style="padding-bottom: 5% ;font-size:10pt;">
+                    <div class="col-md-6" style="padding-bottom: 5%"> By: {{project.user.username}}</div>
+                    <div class="col-md-6">{{project.date|date:"M d, Y" }} </div>
+                </div>
+            </div>
         </div>
+        {%endfor%}
+    </div>
+    
+
+    <div class="footer">
+        <footer class="page-footer">
+            <div style=" font-size:12pt;">
+                <div class="footer-copyright py-3"
+                    style="padding-left: 42%;background-color:#050530;padding:20px;text-align:center;color:wheat">
+                    &#169;Copyright 2021: Benjamin
+                    Kipkorir
+                </div>
+            </div>
+        </footer>
     </div>
 </div>
-
-{%endblock%}
+    
+    {%endblock%}
 
 </body>
+
 </html>

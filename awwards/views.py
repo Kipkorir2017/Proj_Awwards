@@ -53,7 +53,7 @@ def view_project(request, id):
             review.average = (
             review.design + review.usability + review.content)/3
             review.save()
-            return HttpResponseRedirect(reverse('viewProject', args=(project.id,)))
+            return HttpResponseRedirect(reverse('viewproject', args=(project.id,)))
     else:
         form = RatingsForm()
     params = {
