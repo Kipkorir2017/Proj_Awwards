@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^$',views.display_index,name="index"),
     url('profile/',views.profile, name='profile'),
     url('search/', views.search, name='search'),
+    url('signup/',views.signup,name="sign_up"),
     url('project_info/(?P<id>\d+)', views.view_project, name='viewproject'),
     url('upload/',views.post_project,name='post_proj'),
     url('update/',views.update_profile, name='update_prof'),

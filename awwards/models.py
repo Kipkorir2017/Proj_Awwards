@@ -8,6 +8,7 @@ from django.db.models.signals import post_save
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_pic = models.ImageField(upload_to = 'images/')
+    country=models.CharField(max_length=200, blank=True)
     bio = models.TextField(max_length=500, blank=True)
     contact = models.CharField(max_length=30, blank=True)
 
