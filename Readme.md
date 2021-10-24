@@ -9,6 +9,9 @@ A project Awwards Django application that allows users to post their projects  w
 # Live Link
  <a  href="">View</a>
 
+ # Admin credentials
+ * Password: Benja312!!
+
 # User Story
 - User can signup & signin to the application
 - User can post projects they have worked on
