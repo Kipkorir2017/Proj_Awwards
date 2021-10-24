@@ -7,6 +7,14 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
+
+from .models import Profile, Project, Rates
+from .serializers import ProfileSerializer, ProjectSerializer
+from django.http import Http404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
 # Create your views here.
 
 def display_index(request):
@@ -122,3 +130,18 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'registration/registration_form.html', {'form': form})
+
+
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        profiles = Profile.objects.all()
+        serializer = ProfileSerializer(profiles, many=True)
+        return Response(serializer.data)
+
+
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        projects = Project.objects.all()
+        serializer = ProjectSerializer(projects, many=True)
+        return Response(serializer.data)
