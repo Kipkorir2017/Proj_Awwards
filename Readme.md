@@ -10,6 +10,7 @@ A project Awwards Django application that allows users to post their projects  w
  <a  href="">View</a>
 
  # Admin credentials
+ * Benjaa
  * Password: Benja312!!
 
 # User Story
